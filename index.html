@@ -237,7 +237,9 @@
 </div>
 
 <script>
-const WEBHOOK_URL = 'https://hook.us2.make.com/ziji1s7kkierbeh1nn207fdjen51xcza';
+const AIRTABLE_TOKEN = 'patLziOEe4jAx76EV.d41c1d0cda8ad6f354087db4e2afbc066bd8060472992f28153baea874e69fa2';
+const AIRTABLE_BASE = 'appzkFbPtIwKSwFLq';
+const AIRTABLE_TABLE = 'Dealers';
 const lista = [];
 let dadosAtuais = null;
 const marcasSelecionadas = [];
@@ -411,11 +413,60 @@ function adicionarLista(){
     docLogo:(arquivos['logo']||[]).map(f=>f.name).join('; ')
   };
   document.getElementById('btnAdd').disabled=true;
-  setStatus('loading','Enviando dados para a planilha…');
-  fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(registro)})
-  .then(r=>{
-    if(r.ok)setStatus('success',`<strong>${d.razao_social}</strong> enviada para a planilha com sucesso! ✅`);
-    else setStatus('error','Erro ao enviar para a planilha. Tente novamente.');
+  setStatus('loading','Enviando dados para o Airtable…');
+
+  const fields = {
+    'Name': registro.razao,
+    'Email': registro.emailEmpresa,
+    'Phone': registro.telefone,
+    'Address': `${registro.logradouro}, ${registro.numero} - ${registro.bairro}, ${registro.cidade}/${registro.uf}`,
+    'CNPJ': registro.cnpj,
+    'Nome Fantasia': registro.fantasia,
+    'Natureza Jurídica': registro.natureza,
+    'Porte': registro.porte,
+    'Situação': registro.situacao,
+    'CNAE': registro.cnae,
+    'Abertura': registro.abertura,
+    'Site': registro.site,
+    'Marcas': registro.marcas,
+    'Média Vendas/Mês': registro.mediaVendas,
+    'Média Financiadas/Mês': registro.mediaFinanciadas,
+    'Resp. Nome': registro.respNome,
+    'Resp. CPF': registro.respCpf,
+    'Resp. Telefone': registro.respTel,
+    'Resp. E-mail': registro.respEmail,
+    'Test. Nome': registro.testNome,
+    'Test. CPF': registro.testCpf,
+    'Test. E-mail': registro.testEmail,
+    'Banco1 Nº': registro.b1Num,
+    'Banco1 Nome': registro.b1Nome,
+    'Banco1 Agência': registro.b1Ag,
+    'Banco1 CC': registro.b1Cc,
+    'Banco1 PIX': registro.b1Pix,
+    'Banco2 Nº': registro.b2Num,
+    'Banco2 Nome': registro.b2Nome,
+    'Banco2 Agência': registro.b2Ag,
+    'Banco2 CC': registro.b2Cc,
+    'Banco2 PIX': registro.b2Pix,
+    'Doc: Contrato Social': registro.docContratoSocial,
+    'Doc: Cartão CNPJ': registro.docCartaoCNPJ,
+    'Doc: CNH': registro.docCNH,
+    'Doc: Procuração': registro.docProcuracao,
+    'Doc: Logo': registro.docLogo
+  };
+
+  fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/${encodeURIComponent(AIRTABLE_TABLE)}`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({fields})
+  })
+  .then(r => r.json())
+  .then(data => {
+    if(data.id) setStatus('success',`<strong>${d.razao_social}</strong> cadastrada com sucesso no Airtable! ✅`);
+    else setStatus('error','Erro ao enviar para o Airtable: ' + (data.error?.message||'Tente novamente.'));
   })
   .catch(()=>setStatus('error','Não foi possível conectar. Verifique sua internet.'));
 }
