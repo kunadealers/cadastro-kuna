@@ -303,6 +303,9 @@
 </div><!-- /container -->
 
 <script>
+// ─── Webhook ─────────────────────────────────────────────
+const WEBHOOK_URL = 'https://hook.us2.make.com/ziji1s7kkierbeh1nn207fdjen51xcza';
+
 // ─── Dados ───────────────────────────────────────────────
 const lista = [];
 let dadosAtuais = null;
@@ -485,7 +488,7 @@ function adicionarLista(){
   const cnpjFmt=document.getElementById('cnpj').value;
   if(lista.find(x=>x.cnpj===cnpjFmt)){setStatus('error','Este CNPJ já foi adicionado à lista.');return;}
   const g=id=>{const el=document.getElementById(id);return el?el.value:''};
-  lista.push({
+  const registro = {
     cnpj:cnpjFmt,razao:d.razao_social,fantasia:d.nome_fantasia||d.razao_social,
     natureza:d.natureza_juridica,porte:formatPorte(d.porte),
     situacao:d.descricao_situacao_cadastral,
@@ -500,11 +503,29 @@ function adicionarLista(){
     testNome:g('testNome'),testCpf:g('testCpf'),testEmail:g('testEmail'),
     b1Num:g('b1Num'),b1Nome:g('b1Nome'),b1Ag:g('b1Ag'),b1Cc:g('b1Cc'),b1Pix:g('b1Pix'),
     b2Num:g('b2Num'),b2Nome:g('b2Nome'),b2Ag:g('b2Ag'),b2Cc:g('b2Cc'),b2Pix:g('b2Pix'),
-    docs:Object.fromEntries(Object.entries(arquivos).map(([k,v])=>[k,v.map(f=>f.name).join('; ')]))
-  });
+    docContratoSocial:(arquivos['contratoSocial']||[]).map(f=>f.name).join('; '),
+    docCartaoCNPJ:(arquivos['cartaoCNPJ']||[]).map(f=>f.name).join('; '),
+    docCNH:(arquivos['cnh']||[]).map(f=>f.name).join('; '),
+    docProcuracao:(arquivos['procuracao']||[]).map(f=>f.name).join('; '),
+    docLogo:(arquivos['logo']||[]).map(f=>f.name).join('; ')
+  };
+
+  lista.push({...registro, docs:{}});
   renderTabela();
-  setStatus('success',`<strong>${d.razao_social}</strong> adicionada à lista!`);
   document.getElementById('btnAdd').disabled=true;
+  setStatus('loading','Enviando dados para a planilha…');
+
+  // Envia para o Make (webhook → Google Sheets)
+  fetch(WEBHOOK_URL, {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(registro)
+  })
+  .then(r => {
+    if(r.ok) setStatus('success',`<strong>${d.razao_social}</strong> adicionada e enviada para a planilha! ✅`);
+    else setStatus('error','Dados salvos localmente, mas houve erro ao enviar para a planilha.');
+  })
+  .catch(()=>setStatus('error','Dados salvos localmente, mas não foi possível conectar ao webhook.'));
 }
 function remover(i){lista.splice(i,1);renderTabela();}
 
