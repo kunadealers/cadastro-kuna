@@ -386,7 +386,7 @@ function limpar(){
   dadosAtuais=null;document.getElementById('btnAdd').disabled=true;
 }
 
-function adicionarLista(){
+async function adicionarLista(){
   if(!dadosAtuais)return;
   const d=dadosAtuais;
   const cnpjFmt=document.getElementById('cnpj').value;
@@ -415,7 +415,38 @@ function adicionarLista(){
   document.getElementById('btnAdd').disabled=true;
   setStatus('loading','Enviando dados para o Airtable…');
 
+  // Campos extras que precisam existir no Airtable
+  const camposExtras = [
+    'CNPJ','Nome Fantasia','Natureza Jurídica','Porte','Situação','CNAE',
+    'Data Abertura','Site','Marcas','Média Vendas/Mês','Média Financiadas/Mês',
+    'Resp. Nome','Resp. CPF','Resp. Telefone','Resp. E-mail',
+    'Test. Nome','Test. CPF','Test. E-mail',
+    'Banco1 Nº','Banco1 Nome','Banco1 Agência','Banco1 CC','Banco1 PIX',
+    'Banco2 Nº','Banco2 Nome','Banco2 Agência','Banco2 CC','Banco2 PIX',
+    'Doc: Contrato Social','Doc: Cartão CNPJ','Doc: CNH','Doc: Procuração','Doc: Logo'
+  ];
+
+  // Cria campos que ainda não existem
+  async function garantirCampos() {
+    const metaUrl = `https://api.airtable.com/v0/meta/bases/${AIRTABLE_BASE}/tables`;
+    const meta = await fetch(metaUrl, {headers:{'Authorization':`Bearer ${AIRTABLE_TOKEN}`}}).then(r=>r.json());
+    const tabela = meta.tables.find(t=>t.name===AIRTABLE_TABLE);
+    if(!tabela) return;
+    const existentes = tabela.fields.map(f=>f.name);
+    const faltantes = camposExtras.filter(c=>!existentes.includes(c));
+    for(const nome of faltantes) {
+      await fetch(`https://api.airtable.com/v0/meta/bases/${AIRTABLE_BASE}/tables/${tabela.id}/fields`, {
+        method:'POST',
+        headers:{'Authorization':`Bearer ${AIRTABLE_TOKEN}`,'Content-Type':'application/json'},
+        body: JSON.stringify({name: nome, type: 'singleLineText'})
+      });
+    }
+  }
+
+  await garantirCampos();
+
   const fields = {
+
     'Name': registro.razao,
     'Email': registro.emailEmpresa,
     'Phone': registro.telefone,
