@@ -13,19 +13,12 @@
     --radius:10px;--shadow:0 2px 8px rgba(10,37,64,.09);
   }
   body{font-family:'Segoe UI',sans-serif;background:var(--gray);min-height:100vh;padding:0 0 40px}
-  /* Header */
   .header{background:var(--navy);padding:18px 32px;display:flex;align-items:center;gap:14px;margin-bottom:28px}
-  .logo-mark{display:flex;align-items:center;justify-content:center}
-  .logo-mark svg{width:36px;height:36px}
-  .logo-text{font-size:1.55rem;font-weight:800;color:#fff;letter-spacing:-.02em}
   .header-sub{margin-left:auto;font-size:.8rem;color:rgba(255,255,255,.5);text-align:right;line-height:1.4}
-
   .container{max-width:740px;margin:0 auto;padding:0 16px}
-
   .card{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);margin-bottom:16px;border:1px solid var(--border)}
   .card-title{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:18px;display:flex;align-items:center;gap:7px;padding-bottom:10px;border-bottom:1.5px solid var(--navy-light)}
   .card-title span{background:var(--green);color:var(--navy);border-radius:5px;padding:2px 7px;font-size:.65rem}
-
   .field{margin-bottom:14px}
   label{display:block;font-size:.78rem;font-weight:700;color:var(--navy-mid);margin-bottom:5px}
   label small{font-weight:400;color:var(--muted)}
@@ -33,42 +26,23 @@
   input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(0,213,99,.15)}
   input[readonly]{background:var(--navy-light);color:var(--muted);cursor:default}
   input[readonly]:focus{border-color:var(--border);box-shadow:none}
-  textarea{resize:vertical;min-height:72px}
-
   .row{display:grid;gap:12px}
   .row-2{grid-template-columns:1fr 1fr}
   .row-3{grid-template-columns:2fr 1fr 1fr}
-  .row-5050{grid-template-columns:1fr 1fr}
-
-  /* CNPJ */
   .cnpj-wrap{position:relative}
-  .cnpj-wrap input{padding-right:48px;font-size:1rem;font-weight:700;letter-spacing:.06em;border-color:var(--navy-light)}
+  .cnpj-wrap input{padding-right:48px;font-size:1rem;font-weight:700;letter-spacing:.06em}
   .cnpj-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:var(--green);border:none;border-radius:7px;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .18s}
   .cnpj-btn:hover{background:#00bf58}
   .cnpj-btn svg{fill:var(--navy);width:16px;height:16px}
-
-  /* Status */
   .status{display:none;align-items:center;gap:9px;padding:10px 14px;border-radius:8px;font-size:.82rem;margin-bottom:14px}
   .status.loading{background:#e8f4ff;color:#1a6fbd;display:flex}
   .status.success{background:var(--green-light);color:#0a7a3e;display:flex}
   .status.error{background:#fff0f0;color:#c0392b;display:flex}
   .spinner{width:14px;height:14px;border:2px solid #1a6fbd;border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
   @keyframes spin{to{transform:rotate(360deg)}}
-
-  /* Chips */
   .chip-list{margin-top:7px;display:flex;flex-wrap:wrap;gap:5px}
   .chip{background:var(--green-light);color:#0a7a3e;border:1px solid var(--green-mid);border-radius:6px;padding:4px 10px;font-size:.75rem;display:flex;align-items:center;gap:6px;font-weight:600}
-  .chip button{background:none;border:none;cursor:pointer;color:var(--muted);font-size:.95rem;line-height:1;padding:0;transition:color .15s}
-  .chip button:hover{color:#c0392b}
-
-  /* Badge situação */
-  .badge{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.72rem;font-weight:700}
-  .badge.ativa{background:#d4f5e2;color:#0a6b35}
-  .badge.baixada{background:#fde8e8;color:#922b21}
-  .badge.inapta{background:#fef3e2;color:#9a5e00}
-  .badge.outro{background:var(--navy-light);color:var(--muted)}
-
-  /* Upload */
+  .chip button{background:none;border:none;cursor:pointer;color:var(--muted);font-size:.95rem;line-height:1;padding:0}
   .upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .upload-box{border:2px dashed var(--border);border-radius:9px;padding:16px 12px;text-align:center;cursor:pointer;transition:border .2s,background .2s;position:relative;background:#fafbfc}
   .upload-box:hover{border-color:var(--green);background:var(--green-light)}
@@ -79,38 +53,18 @@
   .file-chips{margin-top:7px;display:flex;flex-wrap:wrap;gap:5px}
   .file-chip{background:var(--navy-light);color:var(--navy-mid);border-radius:6px;padding:3px 9px;font-size:.72rem;display:flex;align-items:center;gap:5px}
   .file-chip button{background:none;border:none;cursor:pointer;color:var(--muted);font-size:.9rem;padding:0}
-
-  /* Botões */
   .btn-row{display:flex;gap:10px;margin-top:4px;flex-wrap:wrap}
   .btn{padding:11px 24px;border:none;border-radius:8px;font-size:.88rem;font-weight:700;cursor:pointer;transition:opacity .18s,transform .1s;font-family:inherit}
   .btn:hover{opacity:.88}
   .btn:active{transform:scale(.97)}
   .btn-primary{background:var(--green);color:var(--navy)}
   .btn-outline{background:#fff;color:var(--navy-mid);border:1.5px solid var(--border)}
-  .btn-export{background:var(--navy);color:#fff}
   .btn:disabled{opacity:.4;cursor:not-allowed}
-
-  /* Tabela */
-  .table-wrap{overflow-x:auto;margin-top:8px}
-  table{width:100%;border-collapse:collapse;font-size:.8rem}
-  th{background:var(--navy-light);color:var(--muted);font-weight:800;text-transform:uppercase;font-size:.67rem;letter-spacing:.07em;padding:9px 12px;text-align:left;border-bottom:2px solid var(--border)}
-  td{padding:9px 12px;border-bottom:1px solid var(--gray);color:var(--text);vertical-align:middle}
-  tr:last-child td{border-bottom:none}
-  tr:hover td{background:var(--gray)}
-  .empty{text-align:center;color:var(--muted);padding:28px;font-size:.85rem}
-
-  /* Demo banner */
-  .demo-banner{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--radius);padding:14px 20px;margin-bottom:16px;display:flex;align-items:center;gap:12px;color:#fff}
-  .demo-banner .icon{font-size:1.3rem}
-  .demo-banner p{font-size:.8rem;line-height:1.5;color:rgba(255,255,255,.85)}
-  .demo-banner strong{color:var(--green)}
-
-  @media(max-width:560px){.row-2,.row-3,.row-5050,.upload-grid{grid-template-columns:1fr}.header{padding:14px 16px}}
+  @media(max-width:560px){.row-2,.row-3,.upload-grid{grid-template-columns:1fr}.header{padding:14px 16px}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <img src="https://kuna.com.br/wp-content/uploads/2025/10/imgi_1_kuna-logo.png" alt="Kuna" style="height:38px;object-fit:contain;max-width:180px" onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='block'">
   <span id="logo-fallback" style="display:none;font-size:1.55rem;font-weight:800;color:#fff;letter-spacing:-.02em">kuna</span>
@@ -118,8 +72,6 @@
 </div>
 
 <div class="container">
-
-
 
   <!-- DADOS DA EMPRESA -->
   <div class="card">
@@ -148,15 +100,11 @@
       <div class="field"><label>Data de Abertura</label><input type="text" id="abertura" readonly placeholder="—"></div>
     </div>
     <div class="field"><label>Site da Concessionária</label><input type="url" id="site" placeholder="https://www.suaconcessionaria.com.br"></div>
-
     <div class="field">
       <label>Marca(s) que trabalha <small>— selecione uma ou mais</small></label>
-      <select id="marca" onchange="adicionarMarca()">
-        <option value="">Selecione uma marca…</option>
-      </select>
+      <select id="marca" onchange="adicionarMarca()"><option value="">Selecione uma marca…</option></select>
       <div class="chip-list" id="marcasSelecionadas"></div>
     </div>
-
     <div class="row row-2">
       <div class="field"><label>Média de Vendas / Mês <small>(qtd)</small></label><input type="number" id="mediaVendas" min="0" placeholder="Ex: 50"></div>
       <div class="field"><label>Média de Vendas Financiadas / Mês <small>(qtd)</small></label><input type="number" id="mediaFinanciadas" min="0" placeholder="Ex: 30"></div>
@@ -286,31 +234,15 @@
     <button class="btn btn-outline" onclick="limpar()">🔄 Limpar</button>
   </div>
 
-  <!-- LISTA -->
-  <div class="card" style="margin-top:24px">
-    <div class="card-title">📋 Concessionárias Cadastradas <span id="count">0</span></div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>CNPJ</th><th>Razão Social</th><th>Cidade/UF</th><th>Marcas</th><th>Situação</th><th></th></tr></thead>
-        <tbody id="tbody"><tr><td colspan="6" class="empty">Nenhuma concessionária adicionada ainda.</td></tr></tbody>
-      </table>
-    </div>
-
-  </div>
-
-</div><!-- /container -->
+</div>
 
 <script>
-// ─── Webhook ─────────────────────────────────────────────
 const WEBHOOK_URL = 'https://hook.us2.make.com/ziji1s7kkierbeh1nn207fdjen51xcza';
-
-// ─── Dados ───────────────────────────────────────────────
 const lista = [];
 let dadosAtuais = null;
 const marcasSelecionadas = [];
 const arquivos = {};
 
-// ─── Marcas (lista local baseada na FIPE) ────────────────
 const MARCAS_FIPE = [
   "Acura","Agrale","Alfa Romeo","AM Gen","Aston Martin","Audi","Baby","BYD",
   "Bentley","BMW","Bugatti","Bugre","Caoa Chery","Changan","Chevrolet","Chrysler",
@@ -325,58 +257,48 @@ const MARCAS_FIPE = [
 ].sort();
 
 function popularMarcas(){
-  const sel = document.getElementById('marca');
-  sel.innerHTML = '<option value="">Selecione uma marca…</option>';
-  MARCAS_FIPE.forEach(m => {
-    const o = document.createElement('option');
-    o.value = m; o.textContent = m;
-    sel.appendChild(o);
-  });
+  const sel=document.getElementById('marca');
+  sel.innerHTML='<option value="">Selecione uma marca…</option>';
+  MARCAS_FIPE.forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=m;sel.appendChild(o);});
 }
 popularMarcas();
 
 function adicionarMarca(){
-  const sel = document.getElementById('marca');
-  const val = sel.value;
-  if(!val || marcasSelecionadas.includes(val)){sel.value='';return;}
+  const sel=document.getElementById('marca');
+  const val=sel.value;
+  if(!val||marcasSelecionadas.includes(val)){sel.value='';return;}
   marcasSelecionadas.push(val);
-  renderMarcas(); sel.value='';
+  renderMarcas();sel.value='';
 }
-function removerMarca(m){
-  const i=marcasSelecionadas.indexOf(m);
-  if(i>-1) marcasSelecionadas.splice(i,1);
-  renderMarcas();
-}
+function removerMarca(m){const i=marcasSelecionadas.indexOf(m);if(i>-1)marcasSelecionadas.splice(i,1);renderMarcas();}
 function renderMarcas(){
-  document.getElementById('marcasSelecionadas').innerHTML =
+  document.getElementById('marcasSelecionadas').innerHTML=
     marcasSelecionadas.map(m=>`<div class="chip">${m}<button onclick="removerMarca('${m.replace(/'/g,"\\'")}')">×</button></div>`).join('');
 }
 
-// ─── Máscaras ────────────────────────────────────────────
 document.getElementById('cnpj').addEventListener('input',function(){
   let v=this.value.replace(/\D/g,'').slice(0,14);
-  if(v.length>12) v=v.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2})/,'$1.$2.$3/$4-$5');
-  else if(v.length>8) v=v.replace(/^(\d{2})(\d{3})(\d{3})(\d{0,4})/,'$1.$2.$3/$4');
-  else if(v.length>5) v=v.replace(/^(\d{2})(\d{3})(\d{0,3})/,'$1.$2.$3');
-  else if(v.length>2) v=v.replace(/^(\d{2})(\d{0,3})/,'$1.$2');
+  if(v.length>12)v=v.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2})/,'$1.$2.$3/$4-$5');
+  else if(v.length>8)v=v.replace(/^(\d{2})(\d{3})(\d{3})(\d{0,4})/,'$1.$2.$3/$4');
+  else if(v.length>5)v=v.replace(/^(\d{2})(\d{3})(\d{0,3})/,'$1.$2.$3');
+  else if(v.length>2)v=v.replace(/^(\d{2})(\d{0,3})/,'$1.$2');
   this.value=v;
-  if(v.replace(/\D/g,'').length===14) buscarCNPJ();
+  if(v.replace(/\D/g,'').length===14)buscarCNPJ();
 });
 document.getElementById('cnpj').addEventListener('keydown',e=>{if(e.key==='Enter')buscarCNPJ()});
 
 function maskCPF(el){
   el.addEventListener('input',function(){
     let v=this.value.replace(/\D/g,'').slice(0,11);
-    if(v.length>9) v=v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/,'$1.$2.$3-$4');
-    else if(v.length>6) v=v.replace(/(\d{3})(\d{3})(\d{0,3})/,'$1.$2.$3');
-    else if(v.length>3) v=v.replace(/(\d{3})(\d{0,3})/,'$1.$2');
+    if(v.length>9)v=v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/,'$1.$2.$3-$4');
+    else if(v.length>6)v=v.replace(/(\d{3})(\d{3})(\d{0,3})/,'$1.$2.$3');
+    else if(v.length>3)v=v.replace(/(\d{3})(\d{0,3})/,'$1.$2');
     this.value=v;
   });
 }
 maskCPF(document.getElementById('respCpf'));
 maskCPF(document.getElementById('testCpf'));
 
-// ─── Consulta CNPJ ───────────────────────────────────────
 function setStatus(type,msg){
   const el=document.getElementById('status');
   el.className='status '+type;
@@ -387,35 +309,43 @@ async function buscarCNPJ(){
   const raw=document.getElementById('cnpj').value.replace(/\D/g,'');
   if(raw.length!==14){setStatus('error','CNPJ deve ter 14 dígitos.');return;}
   setStatus('loading','Consultando Receita Federal…');
-  limparCamposAuto(); dadosAtuais=null;
+  limparCamposAuto();dadosAtuais=null;
   document.getElementById('btnAdd').disabled=true;
   try{
     const r=await fetch(`https://brasilapi.com.br/api/cnpj/v1/${raw}`);
-    if(!r.ok) throw new Error(r.status===404?'CNPJ não encontrado.':'Erro na consulta ('+r.status+').');
+    if(!r.ok)throw new Error(r.status===404?'CNPJ não encontrado.':'Erro na consulta ('+r.status+').');
     const d=await r.json();
-    preencherCampos(d);
-    dadosAtuais=d;
+    preencherCampos(d);dadosAtuais=d;
     document.getElementById('btnAdd').disabled=false;
     setStatus('success',`Dados de <strong>${d.razao_social}</strong> carregados com sucesso!`);
   }catch(err){
-    setStatus('error',err.message.includes('fetch')?'Erro de conexão. Verifique sua internet ou hospede o arquivo para usar a consulta automática.':err.message);
+    setStatus('error',err.message.includes('fetch')?'Erro de conexão.':err.message);
   }
 }
 
 function preencherCampos(d){
-  set('razao',d.razao_social);
-  set('fantasia',d.nome_fantasia||d.razao_social);
-  set('natureza',d.natureza_juridica);
-  set('porte',formatPorte(d.porte));
-  set('abertura',formatData(d.data_inicio_atividade));
-  set('situacao',d.descricao_situacao_cadastral);
+  set('razao',d.razao_social);set('fantasia',d.nome_fantasia||d.razao_social);
+  set('natureza',d.natureza_juridica);set('porte',formatPorte(d.porte));
+  set('abertura',formatData(d.data_inicio_atividade));set('situacao',d.descricao_situacao_cadastral);
   set('cnae',d.cnae_fiscal_descricao?`${d.cnae_fiscal} – ${d.cnae_fiscal_descricao}`:(d.cnae_fiscal||'—'));
-  set('logradouro',d.logradouro); set('numero',d.numero);
-  set('complemento',d.complemento); set('bairro',d.bairro);
-  set('cidade',`${d.municipio} / ${d.uf}`);
-  set('cep',formatCEP(d.cep));
-  set('telefone',d.ddd_telefone_1?formatTel(d.ddd_telefone_1):'—');
+  set('logradouro',d.logradouro);set('numero',d.numero);set('complemento',d.complemento);
+  set('bairro',d.bairro);set('cidade',`${d.municipio} / ${d.uf}`);
+  set('cep',formatCEP(d.cep));set('telefone',d.ddd_telefone_1?formatTel(d.ddd_telefone_1):'—');
   set('email',d.email||'—');
+}
+
+function preencherDemo(){
+  document.getElementById('cnpj').value='00.000.000/0001-91';
+  const d={razao_social:'KUNA FINANCEIRA LTDA',nome_fantasia:'Kuna',
+    natureza_juridica:'206-2 - Sociedade Empresária Limitada',porte:'EPP',
+    descricao_situacao_cadastral:'ATIVA',cnae_fiscal:'6422100',
+    cnae_fiscal_descricao:'Bancos múltiplos, com carteira comercial',
+    data_inicio_atividade:'2018-03-15',logradouro:'Av. Paulista',numero:'1000',
+    complemento:'Conj 101',bairro:'Bela Vista',municipio:'São Paulo',uf:'SP',
+    cep:'01310100',ddd_telefone_1:'1131234567',email:'contato@kuna.com.br'};
+  preencherCampos(d);dadosAtuais=d;
+  document.getElementById('btnAdd').disabled=false;
+  setStatus('success','Dados de demonstração preenchidos!');
 }
 
 const set=(id,val)=>{const el=document.getElementById(id);if(el)el.value=val||'—'};
@@ -424,42 +354,18 @@ const formatData=d=>{if(!d)return'—';const[y,m,day]=d.split('-');return`${day}
 const formatCEP=c=>{if(!c)return'—';const n=c.replace(/\D/g,'');return n.length===8?n.replace(/(\d{5})(\d{3})/,'$1-$2'):c};
 const formatTel=t=>{const n=t.replace(/\D/g,'');if(n.length===10)return n.replace(/(\d{2})(\d{4})(\d{4})/,'($1) $2-$3');if(n.length===11)return n.replace(/(\d{2})(\d{5})(\d{4})/,'($1) $2-$3');return t};
 
-// ─── Demo ────────────────────────────────────────────────
-function preencherDemo(){
-  document.getElementById('cnpj').value='00.000.000/0001-91';
-  const d={
-    razao_social:'KUNA FINANCEIRA LTDA', nome_fantasia:'Kuna',
-    natureza_juridica:'206-2 - Sociedade Empresária Limitada',
-    porte:'EPP', descricao_situacao_cadastral:'ATIVA',
-    cnae_fiscal:'6422100', cnae_fiscal_descricao:'Bancos múltiplos, com carteira comercial',
-    data_inicio_atividade:'2018-03-15',
-    logradouro:'Av. Paulista', numero:'1000', complemento:'Conj 101',
-    bairro:'Bela Vista', municipio:'São Paulo', uf:'SP', cep:'01310100',
-    ddd_telefone_1:'1131234567', email:'contato@kuna.com.br'
-  };
-  preencherCampos(d); dadosAtuais=d;
-  document.getElementById('btnAdd').disabled=false;
-  setStatus('success','Dados de demonstração preenchidos! <strong>(modo preview)</strong>');
-}
-
-// ─── Upload ───────────────────────────────────────────────
 function handleFiles(key,input){
-  if(!arquivos[key]) arquivos[key]=[];
-  Array.from(input.files).forEach(f=>{
-    if(!arquivos[key].find(x=>x.name===f.name)) arquivos[key].push(f);
-  });
+  if(!arquivos[key])arquivos[key]=[];
+  Array.from(input.files).forEach(f=>{if(!arquivos[key].find(x=>x.name===f.name))arquivos[key].push(f);});
   renderFiles(key);
 }
 function renderFiles(key){
-  const el=document.getElementById('files-'+key);
-  if(!el)return;
+  const el=document.getElementById('files-'+key);if(!el)return;
   el.innerHTML=(arquivos[key]||[]).map((f,i)=>
-    `<div class="file-chip">📎 ${f.name}<button onclick="removeFile('${key}',${i})">×</button></div>`
-  ).join('');
+    `<div class="file-chip">📎 ${f.name}<button onclick="removeFile('${key}',${i})">×</button></div>`).join('');
 }
 function removeFile(key,idx){arquivos[key].splice(idx,1);renderFiles(key);}
 
-// ─── Limpar ───────────────────────────────────────────────
 function limparCamposAuto(){
   ['razao','fantasia','natureza','porte','situacao','cnae','abertura',
    'logradouro','numero','complemento','bairro','cidade','cep','telefone','email']
@@ -473,20 +379,17 @@ function limpar(){
    'testNome','testCpf','testEmail','b1Num','b1Nome','b1Ag','b1Cc','b1Pix',
    'b2Num','b2Nome','b2Ag','b2Cc','b2Pix']
   .forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});
-  marcasSelecionadas.length=0; renderMarcas();
+  marcasSelecionadas.length=0;renderMarcas();
   Object.keys(arquivos).forEach(k=>{arquivos[k]=[];renderFiles(k);});
-  dadosAtuais=null;
-  document.getElementById('btnAdd').disabled=true;
+  dadosAtuais=null;document.getElementById('btnAdd').disabled=true;
 }
 
-// ─── Lista ────────────────────────────────────────────────
 function adicionarLista(){
   if(!dadosAtuais)return;
   const d=dadosAtuais;
   const cnpjFmt=document.getElementById('cnpj').value;
-  if(lista.find(x=>x.cnpj===cnpjFmt)){setStatus('error','Este CNPJ já foi adicionado à lista.');return;}
   const g=id=>{const el=document.getElementById(id);return el?el.value:''};
-  const registro = {
+  const registro={
     cnpj:cnpjFmt,razao:d.razao_social,fantasia:d.nome_fantasia||d.razao_social,
     natureza:d.natureza_juridica,porte:formatPorte(d.porte),
     situacao:d.descricao_situacao_cadastral,
@@ -507,75 +410,14 @@ function adicionarLista(){
     docProcuracao:(arquivos['procuracao']||[]).map(f=>f.name).join('; '),
     docLogo:(arquivos['logo']||[]).map(f=>f.name).join('; ')
   };
-
-  lista.push({...registro, docs:{}});
-  renderTabela();
   document.getElementById('btnAdd').disabled=true;
   setStatus('loading','Enviando dados para a planilha…');
-
-  // Envia para o Make (webhook → Google Sheets)
-  fetch(WEBHOOK_URL, {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(registro)
+  fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(registro)})
+  .then(r=>{
+    if(r.ok)setStatus('success',`<strong>${d.razao_social}</strong> enviada para a planilha com sucesso! ✅`);
+    else setStatus('error','Erro ao enviar para a planilha. Tente novamente.');
   })
-  .then(r => {
-    if(r.ok) setStatus('success',`<strong>${d.razao_social}</strong> adicionada e enviada para a planilha! ✅`);
-    else setStatus('error','Dados salvos localmente, mas houve erro ao enviar para a planilha.');
-  })
-  .catch(()=>setStatus('error','Dados salvos localmente, mas não foi possível conectar ao webhook.'));
-}
-function remover(i){lista.splice(i,1);renderTabela();}
-
-function badgeSit(s){
-  const l=(s||'').toLowerCase();
-  const cls=l.includes('ativa')?'ativa':l.includes('baixada')?'baixada':l.includes('inapta')?'inapta':'outro';
-  return`<span class="badge ${cls}">${s||'—'}</span>`;
-}
-function renderTabela(){
-  document.getElementById('count').textContent=lista.length;
-  const tbody=document.getElementById('tbody');
-  if(!lista.length){tbody.innerHTML='<tr><td colspan="6" class="empty">Nenhuma concessionária adicionada ainda.</td></tr>';return;}
-  tbody.innerHTML=lista.map((e,i)=>`
-    <tr>
-      <td>${e.cnpj}</td>
-      <td><strong>${e.razao}</strong>${e.fantasia&&e.fantasia!==e.razao?`<br><small style="color:var(--muted)">${e.fantasia}</small>`:''}</td>
-      <td>${e.cidade}/${e.uf}</td>
-      <td style="max-width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${e.marcas||'—'}</td>
-      <td>${badgeSit(e.situacao)}</td>
-      <td><button onclick="remover(${i})" style="background:none;border:none;cursor:pointer;color:#e74c3c;font-size:1rem">🗑</button></td>
-    </tr>`).join('');
-}
-
-// ─── CSV ──────────────────────────────────────────────────
-function exportarCSV(){
-  if(!lista.length)return;
-  const cols=['CNPJ','Razão Social','Nome Fantasia','Natureza Jurídica','Porte','Situação','CNAE','Abertura','Site',
-    'Logradouro','Número','Complemento','Bairro','Cidade','UF','CEP','Telefone','E-mail Empresa','Marcas',
-    'Média Vendas/Mês','Média Financiadas/Mês',
-    'Resp. Nome','Resp. CPF','Resp. Telefone','Resp. E-mail',
-    'Test. Nome','Test. CPF','Test. E-mail',
-    'Banco1 Nº','Banco1 Nome','Banco1 Agência','Banco1 CC','Banco1 PIX',
-    'Banco2 Nº','Banco2 Nome','Banco2 Agência','Banco2 CC','Banco2 PIX',
-    'Doc: Contrato Social','Doc: Cartão CNPJ','Doc: CNH','Doc: Procuração','Doc: Logo'];
-  const keys=['cnpj','razao','fantasia','natureza','porte','situacao','cnae','abertura','site',
-    'logradouro','numero','complemento','bairro','cidade','uf','cep','telefone','emailEmpresa','marcas',
-    'mediaVendas','mediaFinanciadas',
-    'respNome','respCpf','respTel','respEmail',
-    'testNome','testCpf','testEmail',
-    'b1Num','b1Nome','b1Ag','b1Cc','b1Pix',
-    'b2Num','b2Nome','b2Ag','b2Cc','b2Pix'];
-  const esc=v=>`"${(v||'').toString().replace(/"/g,'""')}"`;
-  const docKeys=['contratoSocial','cartaoCNPJ','cnh','procuracao','logo'];
-  const rows=[cols.join(';'),...lista.map(r=>[
-    ...keys.map(k=>esc(r[k])),
-    ...docKeys.map(k=>esc(r.docs?.[k]||''))
-  ].join(';'))];
-  const blob=new Blob(['\uFEFF'+rows.join('\n')],{type:'text/csv;charset=utf-8'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='concessionarias_kuna.csv';
-  a.click();
+  .catch(()=>setStatus('error','Não foi possível conectar. Verifique sua internet.'));
 }
 </script>
 </body>
