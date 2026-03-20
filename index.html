@@ -426,7 +426,7 @@ function adicionarLista(){
     'Porte': registro.porte,
     'Situação': registro.situacao,
     'CNAE': registro.cnae,
-    'Abertura': registro.abertura,
+    'Data Abertura': registro.abertura,
     'Site': registro.site,
     'Marcas': registro.marcas,
     'Média Vendas/Mês': registro.mediaVendas,
@@ -455,13 +455,16 @@ function adicionarLista(){
     'Doc: Logo': registro.docLogo
   };
 
+  // Remove campos vazios para não criar colunas desnecessárias
+  Object.keys(fields).forEach(k => { if(!fields[k]) delete fields[k]; });
+
   fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/${encodeURIComponent(AIRTABLE_TABLE)}`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({fields})
+    body: JSON.stringify({fields, typecast: true})
   })
   .then(r => r.json())
   .then(data => {
